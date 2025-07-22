@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z8MJKC3L7C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Z8MJKC3L7C');
+</script>
+
+{% block content %}
+    <section class="content">
+      <header>
+          <br>
+          <div class="big_text">
+            <p>We introduce here a server that predicts TCR-HLA binding</p>
+	    <br>
+<p>The input of the model is a list of pairs of TCR and HLA, and the output is a number between 0 and 1, that represent the probability of the TCR-HLA pair to bind
+The format of the input file should look like the example (CSV).</p>
+<p> The csv file needs to include the column: tcra, tcrb, va, vb, ja. jb, t_cell_type, mhc. If you don't have some of the information, you may leave the columns empty.</p>
+<p>The input file should contain the same columns as in the example file.
+You can try to use this file to experience with the model.</p>
+<br>
+<p>For questions -  netaglazer@gmail.com</p>
+          </div>
+      </header>
+    </section>
+{% endblock %}

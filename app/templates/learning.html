@@ -1,0 +1,96 @@
+{% extends 'new_base.html' %}
+
+
+{% block content %}
+
+{% macro build_option(name, selected_att) -%}
+
+
+<body>
+{% if name == selected_att %}
+      <option value="{{ name }}" selected="selected">{{name}}</option>
+    {% else %}
+      <option value="{{ name }}">{{name}}</option>
+    {% endif %}
+{%- endmacro %}
+
+{% if results >= 1 %}
+    <br>
+    <br>
+    <form method="post" action="Learning/<algorithm>"  enctype=multipart/form-data>
+    <div class="with_part_margin">
+        <h1> please specify a tag and groups file</h1>
+        <label for="tag_file">Select a Tag file:</label>
+        <input type=file id="tag_file" name="tag_file" value="{{tag_file}}" required>
+        <br>
+        <label for="groups_file">Select a groups file:</label>
+        <input type=file id="groups_file" name="groups_file" value="{{groups_file}}">
+        <br><br>
+    </div>
+        <input class="btn" type="submit" value="Random forest" onclick="this.form.action='/Learning/random-forest';calculating()">
+        <input class="btn" type="submit" value="Xgboost" onclick="this.form.action='/Learning/xgboost';calculating()">
+        <input class="btn" type="submit" value="Fully connected" onclick="this.form.action='/Learning/nn';calculating()">
+        <input class="btn" type="submit" value="Imic" onclick="this.form.action='/Learning/imic';calculating()">
+    </form>
+<p id="calc"></p>
+{%if results >= 2 %}
+    {% if results == 2 %}
+    <div class="with_part_margin">
+        <h1 id="auc">    the auc is {{ auc }}</h1>
+    </div>
+    {%elif results ==3 %}
+    <div class="with_part_margin">
+        <h1 id="auc">    the r2 is {{ auc }}</h1>
+            </div>
+
+    {% endif %}
+    <br>
+    <br>
+    <br>
+    {% if roc is defined %}
+        {%if results == 2 %}
+            <img id="roc" src="../get_image/{{ip}}/static/roc.png">
+        {%elif results ==3 %}
+            <img id="roc" src="../get_image/{{ip}}/static/scatter.png">
+        {% endif %}
+    {% endif %}
+    <style>
+        .auc {
+          text-align:center;
+
+        }
+        img {
+          display: block;
+          margin-left: 45%;
+          margin-right: auto;
+          margin-top: -150px;
+          height: 50%;
+          width: 50%;
+        }
+    </style>
+{% endif %}
+<br>
+<br>
+<br>
+
+{% else %}
+      <h3 class="with_margin"> No results at the moment..</h3>
+        {% if message is defined %}
+            <h3 class="with_margin">{{ message }}</h3>
+        {% endif %}
+{% endif %}
+</body>
+<script>
+    function learn(algorithm_name){
+        $.post( "Learning/" + algorithm_name, function(data) {
+            console.log(data)
+        });
+    }
+
+    function calculating() {
+        document.getElementById("calc").innerHTML = "Calculating...";
+    }
+
+</script>
+
+{% endblock %}

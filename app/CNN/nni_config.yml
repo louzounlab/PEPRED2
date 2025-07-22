@@ -1,0 +1,21 @@
+authorName: Roy Cirkin
+experimentName: CNN_VG_SWPAS
+trialConcurrency: 1
+maxExecDuration: 24h
+maxTrialNum: 50000
+trainingServicePlatform: local
+logLevel: fatal
+# The path to Search Space
+searchSpacePath: nni_search_space.json
+useAnnotation: false
+tuner:
+  builtinTunerName: TPE
+  classArgs:
+    optimize_mode: maximize
+  # The path and the running command of trial
+trial:
+  command: CUDA_VISIBLE_DEVICES=0 python /home/dsi/haimisakov/vg_Swpas/CNN/main_nni_runner_tt.py cnn2 vaginal_swpas dendogram
+  codeDir: /home/dsi/haimisakov/vg_Swpas/CNN/
+  gpuNum: 2
+localConfig:
+  useActiveGpu: true

@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z8MJKC3L7C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Z8MJKC3L7C');
+</script>
+
+{% block content %}
+  <h1 class="h1_title">CLAIRE</h1>
+<section class="content">
+  <form class="central_box" method="post"  enctype=multipart/form-data>
+    <div>
+    {% macro build_option(name, selected_att) -%}
+    {% if name == selected_att %}
+      <option value="{{ name }}" selected="selected">{{name}}</option>
+    {% else %}
+      <option value="{{ name }}">{{name}}</option>
+    {% endif %}
+    {%- endmacro %}
+
+    <div class="site_form">
+    <div class="site_input">
+      <label for="input_file">Select input file:<br></label>
+      <input type=file id="input_file" name="input_file" value="{{input_file}}">
+    </div>
+
+    </div>
+
+    <br><br><br>
+
+    <div class="site_center">
+        <input class="btn submit_btn" type="submit" value="calculate">
+    </div>
+    </div>
+  </form>
+
+  <style>
+  * {
+    box-sizing: border-box;
+  }
+
+  .column {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+  }
+
+  /* Clearfix (clear floats) */
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  </style>
+
+<style>
+    table, th, td {
+      border: 1px solid black;
+    }
+</style>
+
+{% macro table_row(row) -%}
+    <tr>
+    {% for item in row %}
+        <th>{{ item }}</th>
+    {% endfor %}
+    </tr>
+{%- endmacro %}
+
+
+  {% if output_flag is defined %}
+      <div>
+          <br>
+            <div class="output">
+                <button class="btn download-button">
+                    <a class="download-link" href="/download-outputs">download</a>
+                </button>
+            </div>
+          <br>
+      </div>
+  {% endif %}
+
+</section>
+
+{% endblock %}

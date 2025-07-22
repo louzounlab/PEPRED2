@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block title %}PEPRED{% endblock %}
+{% block head %}
+    {{super()}}
+{% endblock %}
+{% block body %}
+    {{super()}}
+    <br>
+    <h1 style="padding: 0.5%;text-align:left;font-size: 35px;color: #6E7376;font-weight: bold">Example</h1>
+<div style="text-align: left; font-weight: bold; margin-left: 2%">
+
+    <p>
+        <b style="font-size:25px">Features</b><br>
+    </p>
+    <ul>
+        <li style=" font-size: 20px"><p>The required features are:</p>
+            <ul>
+                <li><b>Type of Preeclampsia</b> - Preterm (less than 37weeks ) and All (Any Gestational Age). Previous prgnancies lasting beyond 24 weeks. If answer is yes.</li>
+                <li><b>GA</b> - Gestational age where all following biomarker are taken (per days). Default is 89.</li>
+                <li><b>Pappa </b> - Pregnancy associated plasma protein-A. Default is 2.7.</li>
+                <li><b>Utpi</b> - Mean uterine. Default is 1.65.</li>
+                <li><b>Map</b> - Mean arterial pressure. Default is 86.5.</li>
+                <li><b>Plgf</b> - Angiogenic placental growth factor. Default is 35.</li>
+                <li><b>PLGF Machine</b> - Type of machine used for plgf. Default is Delfia.</li>
+                <li><b>Interval</b> - Interval from the end of the last of pregnancy (per years). Default is 3.</li>
+                <li><b>Last GA</b> - Gestational age of previous pregnancy (per weeks). Default is 40.</li>
+                <li><b>Age</b> - Mother age. Default is 31.</li>
+                <li><b>HT</b> - Mother height in cm. Default is 164.9.</li>
+                <li><b>WT</b> - Mother weigh. Default is 67.1</li>
+                <li><b>Race</b> - Mother race. Default is White.</li>
+                <li><b>Conception</b> - Conception type. Default is Spontaneous.</li>
+                <li><b>Smoking</b> - Whether the mother smokes. Default is No.</li>
+                <li><b>Family history of PE</b> - Whether the grandmother of the baby had PE. Default is No.</li>
+                <li><b>Chronic hypertension</b> - Whether the mother has Chronich hypertension. Default is No.</li>
+                <li><b>Diabetes</b> - Whether the mother has diabetes (and type). Default is No.</li>
+                <li><b>SLE</b> - Whether the mother has Lupus. Default is No.</li>
+                <li><b>Previous PE</b> - Whether the mother had previous PE. Default is No.</li>
+            </ul>
+        </li>
+        <li>
+            Empty features are filled with default values.<br>
+        </li>
+    </ul>
+</div>
+{% endblock %}

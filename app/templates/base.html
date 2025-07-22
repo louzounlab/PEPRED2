@@ -1,0 +1,238 @@
+<!doctype html>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<nav>
+    <style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #e7e7e7;
+  background-color: #f3f3f3;
+}
+
+li {
+  float: left;
+  border-right:1px solid #bbb;
+}
+
+li:last-child {
+  border-right: none;
+}
+
+li a {
+  display: block;
+  color: #666;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #5E84FF;
+  color: #000000;
+}
+
+body {
+    background-color: #F2F2F2;
+    font-family: "Lucida Sans Unicode", sans-serif;
+}
+
+.h1_title {
+    text-align:center;
+    font-size: 35px;
+    color: #115676;
+    font-weight: bold;
+}
+
+.central_box {
+    background-color: #E6FFFF;
+    width: 90%;
+    margin:0 auto;
+    border-radius: 8px;
+    padding: 5% 15%;
+    {#align-content: center;#}
+    {#align-items: center;#}
+    text-align: left;
+}
+
+.site_form {
+    margin: auto;
+    width: 400px;
+    {#background-color: #A0FAB2;#}
+}
+
+.site_input {
+    font-size: 18px;
+    color: #000000;
+}
+
+.btn {
+    color: #FFFFFF;
+    border-radius: 4px;
+}
+
+.submit_btn {
+    padding: 0.5% 7%;
+    font-size: 18px;
+    background-color: #5E84FF;
+}
+
+.download-button {
+    padding: 6px 6px;
+    font-size: 16px;
+    background-color: #CFE0E9;
+    border-radius: 2px;
+    border-color: white;
+}
+
+.download-link {
+    color: #000000;
+}
+
+.site_center {
+    text-align: center;
+}
+
+.big_text {
+    padding-left: 20px;
+}
+
+.output {
+    text-align: center;
+    margin: auto;
+}
+
+.active {
+  background-color: #000070;
+  color: #E5E5E5;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 47px;
+  height: 20px;
+}
+.radio {
+  border-radius: 0px;
+  border-color: white;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+#Races_Table {
+    background-color: #d4e2e3;
+    text-align: center;
+}
+
+#Races_Table td{
+    text-align: center;
+}
+
+#Races_Table{
+    border-collapse:separate;
+    border-spacing:0 12px;
+}
+
+.race_table {
+    width: 1000px;
+}
+
+.race_table th{
+    background-color: #7e9df6;
+}
+
+.race_table td{
+    background-color: #e2e8e9;
+    height: 20px;
+}
+
+
+</style>
+
+    <body>
+
+  {% macro build_navbar_option(name) -%}
+    {% if name == 'About' %}
+      {% if active == 'About' %}
+        <li style="float:right"><a class="active" href="{{ '/' + name }}">About</a></li>
+      {% else %}
+        <li style="float:right"><a href="{{ '/' + name }}">About</a></li>
+      {% endif %}
+    {% else %}
+      {% if name == active %}
+        <li><a class="active" href="{{ '/' + name }}">{{ name }}</a></li>
+      {% else %}
+        <li><a href="{{ '/' + name }}">{{ name }}</a></li>
+      {% endif %}
+    {% endif %}
+  {%- endmacro %}
+
+<ul>
+  {{build_navbar_option('Home')}}
+  {{build_navbar_option('Help')}}
+  {{build_navbar_option('Example')}}
+  {{build_navbar_option('About')}}
+</ul>
+
+
+</body>
+</nav>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% block content %}{% endblock %}
+</section>

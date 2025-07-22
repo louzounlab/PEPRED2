@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block title %}PEPRED{% endblock %}
+{% block head %}
+    {{super()}}
+{% endblock %}
+{% block body %}
+    {{super()}}
+<br>
+    <h1 style="padding: 0.5%;text-align:left;font-size: 35px;color: #6E7376;font-weight: bold">Help</h1>
+    <br>
+<div style="text-align: left; font-weight: bold; margin-left: 2%; font-size: 20px">
+    <p>
+        The purpose of this website is to predict the risk to develop
+        preeclampsia (PE), according to
+        first-trimester non-corrected prior risk combined with first-trimester
+        biochemical and biophysical markers.
+    </p>
+    <p>Input is manually inserted by the user into the fields on the 'Home' page.
+    Each marker has a default value, which is determined by the median value
+    of the data used for training the model.<br>
+    In case the user did not fill out the field, the default value is used.
+    For markers description and default values, see 'Example'.
+    </p>
+    <p>
+    After filling out the values and pressing the 'Result' button,
+    the estimated prediction and its percentile appear on the screen.
+    </p>
+    <p>
+    The roc-curve of the Preterm PE model:
+    </p>
+    <img src="static/AUC.png">
+</div>
+{% endblock %}

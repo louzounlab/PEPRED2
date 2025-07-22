@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z8MJKC3L7C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Z8MJKC3L7C');
+</script>
+
+{% block content %}
+  <h1></h1>
+<section class="content">
+  <header>
+      <div class="big_text">
+          <br>
+    <p>This website is developed by <a href = "mailto: netaglazer@gmail.com">Neta Glazer</a>
+      and <a href = "mailto: tom.bekor@gmail.com">Tom Bekor</a> in the Louzoun lab.</p>
+    <p>Link for the lab website: <a href="http://yolo.math.biu.ac.il/">http://yolo.math.biu.ac.il/</a></p>
+      </div>
+{#      <p>A standalone version of the code is available at:#}
+{#           <a href="https://github.com/louzounlab/microbiome">https://github.com/louzounlab/microbiome</a></p>#}
+  </header>
+</section>
+{% endblock %}
